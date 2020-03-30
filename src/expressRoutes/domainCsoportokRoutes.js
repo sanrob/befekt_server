@@ -59,4 +59,7 @@ domainCsoportokRoutes.route('/edit/:id').get(function (req, res) {
   });
 });
 
+function getDomainCsoport(kod) {
+    
+}
 module.exports = domainCsoportokRoutes;
