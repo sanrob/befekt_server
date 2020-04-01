@@ -15,21 +15,18 @@ devizanemekRoutes.route('/').get(function (req, res) {
     });
 });
 
-// Require Item model in our routes module
-//var Item = require('../models/Item').default.default.default.default;
-//var Item = require('../models/Item').default.default;
-
-// Defined store route
+// Új Devizanem felvétele
 devizanemekRoutes.route('/add').post(function (req, res) {
-  console.log(req.body);
-  var devizanemek = new devizanemek.devizanemekModel(req.body);
-  devizanemek.save()
-    .then(item => {
-      res.status(200).json({'devizanemek': 'Devizaneme added successfully'});
-    })
-    .catch(err => {
-      res.status(400).send("unable to save to database");
-    });
+    var devizanem = new devizanemek.devizanemekModel(req.body);
+    devizanem.save()
+        .then(item => {
+            console.log('Sikeres INSERT: ' + item);
+            res.status(200).json({'devizanem': 'Devizanem added successfully'});
+        })
+        .catch(err => {
+            console.log('Sikertelen INSERT: ' + err);
+            res.status(400).send("unable to save to database");
+        });
 });
 
 
